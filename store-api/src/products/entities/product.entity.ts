@@ -26,7 +26,7 @@ export class Product {
   slug: string;
 
   @Column()
-  price: string;
+  price: number;
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: string;
