@@ -1,6 +1,7 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
+import { SnackbarProvider } from 'notistack';
 import { Navbar } from '../components/NavBar';
 import createEmotionCache from '../createEmotionCache';
 import theme from '../theme';
@@ -20,13 +21,15 @@ function MyApp({
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-        <Container>
-          <Box marginTop={1}>
-            <Component {...pageProps} />
-          </Box>
-        </Container>
+        <SnackbarProvider>
+          <CssBaseline />
+          <Navbar />
+          <Container>
+            <Box marginTop={1}>
+              <Component {...pageProps} />
+            </Box>
+          </Container>
+        </SnackbarProvider>
       </ThemeProvider>
     </CacheProvider>
   );

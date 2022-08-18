@@ -15,23 +15,33 @@ import { api, http } from '../../../http';
 import { CreditCard, Product } from '../../../model';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { useSnackbar } from 'notistack';
 
 interface OrderProps {
   product: Product;
 }
 
 const OrderPage: NextPage<OrderProps> = ({ product }) => {
+  const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
   const { register, handleSubmit } = useForm<CreditCard>();
 
   const onSubmit = async (data: CreditCard) => {
-    data.expiration_month = parseInt(data.expiration_month as string);
-    data.expiration_year = parseInt(data.expiration_year as string);
-    console.log(data);
-    const { data: order } = await api.post('orders', {
-      credit_card: data,
-      items: [{ product_id: product.id, quantity: 1 }],
-    });
-    console.log(order);
+    try {
+      data.expiration_month = parseInt(data.expiration_month as string);
+      data.expiration_year = parseInt(data.expiration_year as string);
+      const { data: order } = await api.post('orders', {
+        credit_card: data,
+        items: [{ product_id: product.id, quantity: 1 }],
+      });
+      router.push(`/orders/${order.id}`);
+    } catch (e) {
+      console.error(axios.isAxiosError(e) ? e.response?.data : e);
+      enqueueSnackbar('Erro ao realizar sua compra', {
+        variant: 'error',
+      });
+    }
   };
 
   return (
