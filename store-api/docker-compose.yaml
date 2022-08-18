@@ -11,6 +11,8 @@ services:
       - .:/home/node/app
     depends_on:
       - db
+    extra_hosts:
+      - 'host.docker.internal:172.17.0.1'
 
   db:
     build: .docker/postgres
@@ -23,6 +25,8 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=store
       - PGDATA=/tmp
+    extra_hosts:
+      - 'host.docker.internal:172.17.0.1'
 
   # pgadmin:
   #   image: dpage/pgadmin4
