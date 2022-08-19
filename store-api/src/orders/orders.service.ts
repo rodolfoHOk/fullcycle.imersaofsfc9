@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from '../products/entities/product.entity';
-import { Connection, In, Repository } from 'typeorm';
+import { DataSource, In, Repository } from 'typeorm';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { Order, OrderStatus } from './entities/order.entity';
@@ -13,7 +13,7 @@ export class OrdersService {
     @InjectRepository(Order) private orderRepo: Repository<Order>,
     @InjectRepository(Product) private productRepo: Repository<Product>,
     private paymentService: PaymentService,
-    private connection: Connection,
+    private dataSource: DataSource,
   ) {}
 
   async create(createOrderDto: CreateOrderDto) {
@@ -29,7 +29,7 @@ export class OrdersService {
       item.price = product.price;
     });
 
-    const queryRunner = this.connection.createQueryRunner();
+    const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
 

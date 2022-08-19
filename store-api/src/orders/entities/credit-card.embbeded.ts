@@ -22,6 +22,6 @@ export class CreditCard {
 
   @Expose({ name: 'number' })
   maskedNumber() {
-    return '**** **** **** ' + this.number.substring(15, 19);
+    return '************' + this.number.substring(12, 16);
   }
 }

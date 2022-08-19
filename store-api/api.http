@@ -1,7 +1,7 @@
 GET http://localhost:3000/products
 
 ###
-GET http://localhost:3000/products/845927dc-5787-4397-8e69-2423affd4711
+GET http://localhost:3000/products/3e7ba970-78ec-4916-8710-771561ea1a10
 
 ###
 GET http://localhost:3000/products/tv-32
@@ -35,7 +35,7 @@ DELETE http://localhost:3000/products/845927dc-5787-4397-8e69-2423affd4711
 GET http://localhost:3000/orders
 
 ###
-GET http://localhost:3000/orders/30d08c4e-dd90-40d0-adfd-6d693abe3320
+GET http://localhost:3000/orders/53c11115-a3aa-45d4-8d17-a9d29f88f137
 
 
 ###
@@ -53,7 +53,7 @@ Content-Type: application/json
        "items":  [
       {
           "quantity": 2,
-          "product_id": "d457aff3-3705-41df-8e5b-f692f7acb1e5"
+          "product_id": "3e7ba970-78ec-4916-8710-771561ea1a10"
       }
    ]
 }

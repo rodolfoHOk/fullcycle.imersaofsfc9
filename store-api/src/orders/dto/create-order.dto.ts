@@ -12,8 +12,7 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-// import { Product } from '../../products/entities/product.entity';
-// import { Exists } from '../../validators/exists.rule';
+import { ProductExists } from '../../validators/product-exists.rule';
 import { MinCallback } from '../../validators/min-callback.rule';
 
 class CreditCardDto {
@@ -50,7 +49,7 @@ class OrderItemDto {
   @IsNotEmpty()
   quantity: number;
 
-  // @Exists(Product)
+  @ProductExists()
   @IsUUID('4')
   @IsString()
   @IsNotEmpty()
