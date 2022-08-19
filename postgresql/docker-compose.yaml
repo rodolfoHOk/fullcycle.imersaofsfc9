@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    build: .docker/postgres
+    container_name: main-db
+    restart: always
+    tty: true
+    volumes:
+      - ./.docker/dbdata:/var/lib/postgresql/data
+      - ./.docker/postgres:/docker-entrypoint-initdb.d
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=root
+      - PGDATA=/tmp
+    extra_hosts: 
+      - 'host.docker.internal:172.17.0.1'
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: imersao-fullcycle-3-store-api-pgadmin
+  #   tty: true
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@user.com
+  #     - PGADMIN_DEFAULT_PASSWORD=123456
+  #   ports:
+  #     - 9000:80

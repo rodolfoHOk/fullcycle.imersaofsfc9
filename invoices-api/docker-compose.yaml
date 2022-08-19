@@ -4,9 +4,9 @@ services:
   api:
     build: .
     entrypoint: ./.docker/entrypoint.sh
-    container_name: store-api
+    container_name: invoices-api
     ports:
-      - 3000:3000
+      - 3002:3000
     volumes:
       - .:/home/node/app
     extra_hosts:
@@ -14,26 +14,26 @@ services:
 
   # db:
   #   build: .docker/postgres
-  #   container_name: store-db
+  #   container_name: invoices-db
   #   restart: always
   #   tty: true
   #   volumes:
   #     - ./.docker/dbdata:/var/lib/postgresql/data
   #   environment:
   #     - POSTGRES_PASSWORD=root
-  #     - POSTGRES_DB=store
+  #     - POSTGRES_DB=invoices
   #     - PGDATA=/tmp
   #   extra_hosts:
   #     - 'host.docker.internal:172.17.0.1'
 
   # pgadmin:
   #   image: dpage/pgadmin4
-  #   container_name: store-pgadmin
+  #   container_name: invoices-pgadmin
   #   tty: true
   #   environment:
   #     - PGADMIN_DEFAULT_EMAIL=admin@user.com
   #     - PGADMIN_DEFAULT_PASSWORD=123456
   #   ports:
-  #     - 9000:80
+  #     - 9002:80
   #   depends_on:
   #     - db
