@@ -44,7 +44,7 @@ Content-Type: application/json
 
 {
     "credit_card": {
-      "number": "1234 5678 1234 5678",
+      "number": "1234567812345678",
       "name": "Rudolf HiOk",
       "expiration_month": 10,
       "expiration_year": 2022,

@@ -12,13 +12,13 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import { Product } from '../../products/entities/product.entity';
-import { Exists } from '../../validators/exists.rule';
+// import { Product } from '../../products/entities/product.entity';
+// import { Exists } from '../../validators/exists.rule';
 import { MinCallback } from '../../validators/min-callback.rule';
 
 class CreditCardDto {
-  @MaxLength(19)
-  @MinLength(19)
+  @MaxLength(16)
+  @MinLength(16)
   @IsString()
   @IsNotEmpty()
   number: string;

@@ -9,8 +9,8 @@ export class CreateCreditCardDto {
   name: string;
 
   // @NotExists(CreditCard, 'number')
-  @MaxLength(19)
-  @MinLength(19)
+  @MaxLength(16)
+  @MinLength(16)
   @IsString()
   @IsNotEmpty()
   number: string;
