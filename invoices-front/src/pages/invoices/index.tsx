@@ -31,7 +31,7 @@ const InvoicesListPage: NextPage<InvoicesListPageProps> = ({ creditCards }) => {
   const { data: invoices = [], error } = useSWR<Invoice[]>(
     `credit-cards/${creditCardNumber.trim()}/invoices`,
     fetcher,
-    { refreshInterval: 5000 }
+    { refreshInterval: 30000 }
   );
 
   if (!creditCards.length) {
@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps<InvoicesListPageProps> = async (
       props: {
         creditCards,
       },
-      revalidate: 30,
+      revalidate: 30000,
     };
   } catch (e) {
     if (axios.isAxiosError(e) && e.response?.status === 404) {

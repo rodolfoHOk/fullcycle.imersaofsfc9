@@ -24,6 +24,10 @@ export class CreditCardService {
     return this.creditCardRepo.findOneOrFail({ where: { id: id } });
   }
 
+  findOneByNumber(number: string) {
+    return this.creditCardRepo.findOne({ where: { number: number } });
+  }
+
   remove(id: string) {
     return `This action removes a #${id} CreditCard`;
   }

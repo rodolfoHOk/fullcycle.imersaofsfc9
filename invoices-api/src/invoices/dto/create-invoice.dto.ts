@@ -9,11 +9,10 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-// import { Exists } from 'src/validators/exists.rule';
-// import { CreditCard } from '../entities/credit-card.entity';
+import { CreditCardExists } from 'src/validators/credit-card-exists.rule';
 
 export class CreateInvoiceDto {
-  // @Exists(CreditCard, 'number')
+  @CreditCardExists()
   @IsString()
   @IsNotEmpty()
   credit_card_number: string;

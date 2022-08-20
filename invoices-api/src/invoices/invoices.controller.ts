@@ -8,7 +8,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { InvoicesService } from './invoices.service';
-import { KafkaCreateInvoiceDto } from './dto/create-invoice.dto';
+import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
@@ -17,8 +17,8 @@ export class InvoicesController {
   constructor(private readonly invoicesService: InvoicesService) {}
 
   @MessagePattern('payments')
-  create(@Payload(new ValidationPipe()) message: KafkaCreateInvoiceDto) {
-    return this.invoicesService.create(message.value);
+  create(@Payload(new ValidationPipe()) message: CreateInvoiceDto) {
+    return this.invoicesService.create(message);
   }
 
   @Get()

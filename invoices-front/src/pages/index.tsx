@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
-import InvoicesListPage from './invoices';
 
-const ProductsListPage: NextPage = () => {
-  return <InvoicesListPage creditCards={[]} />;
+const HomePage: NextPage = () => {
+  return <div>Home</div>;
 };
 
-export default ProductsListPage;
+export default HomePage;

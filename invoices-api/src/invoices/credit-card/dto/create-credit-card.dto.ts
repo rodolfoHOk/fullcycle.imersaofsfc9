@@ -1,6 +1,5 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
-// import { CreditCard } from 'src/invoices/entities/credit-card.entity';
-// import { NotExists } from 'src/validators/not-exists.rule';
+import { CreditCardNotExists } from 'src/validators/credit-card-not-exists.rule';
 
 export class CreateCreditCardDto {
   @MaxLength(255)
@@ -8,7 +7,7 @@ export class CreateCreditCardDto {
   @IsNotEmpty()
   name: string;
 
-  // @NotExists(CreditCard, 'number')
+  @CreditCardNotExists()
   @MaxLength(16)
   @MinLength(16)
   @IsString()
